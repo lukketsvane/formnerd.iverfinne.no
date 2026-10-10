@@ -1,0 +1,27 @@
+:root{color-scheme:dark;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;background:#000;color:#fff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;overscroll-behavior:none}
+body{background:#000}
+a,button{-webkit-appearance:none;appearance:none;border:0;border-radius:0;background:none;color:inherit;font:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:none;text-decoration:underline;text-underline-offset:.4em}
+.studio-header{position:fixed;z-index:20;inset:0 0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:max(12px,env(safe-area-inset-top)) max(18px,env(safe-area-inset-right)) 0 max(18px,env(safe-area-inset-left));pointer-events:none;font-size:14px;line-height:1.2}
+.studio-header a{display:flex;min-height:44px;align-items:center;pointer-events:auto;touch-action:manipulation;transition:color .18s,opacity .18s}
+.studio-header nav{display:flex;gap:22px}
+.studio-header nav a{color:#8a8a8a;min-width:32px;justify-content:center}
+.studio-header nav a[aria-current=page]{color:#fff}
+.studio-header a:active{opacity:.5}
+.studio-gesture{position:fixed;z-index:15;top:calc(max(12px,env(safe-area-inset-top)) + 48px);left:18px;right:18px;margin:0;text-align:center;pointer-events:none;color:#8c8c8c;font-size:12px;line-height:1.4;transition:opacity .3s}
+.studio-gesture[data-dismissed=true]{opacity:0}
+.scene-cycle{display:none}
+#studio-root{position:fixed;inset:0;opacity:1;transition:opacity .16s ease}
+#studio-root[data-transition=out]{opacity:0;pointer-events:none}
+.studio-loading{position:fixed;inset:0;display:grid;place-content:center;padding:30px;font-size:16px;color:#aaa;text-align:center;line-height:1.6}
+.studio-loading a{min-height:44px;display:grid;place-content:center;color:#fff}
+.camera-stages button,.camera-views button,.lens-stages button{min-height:44px}
+.camera-study,.lens-study{bottom:max(12px,env(safe-area-inset-bottom));width:min(420px,100% - 36px)}
+.camera-canvas{outline:none}
+.camera-canvas:focus-visible{outline:none}
+.camera-state{padding:24px;text-align:center}
+@media(max-width:360px){.studio-header{gap:10px;font-size:13px}.studio-header nav{gap:14px}.studio-gesture{font-size:11px}.camera-study,.lens-study{width:calc(100% - 28px)}}
+@media(max-height:500px){.studio-gesture{display:none}.camera-study,.lens-study{bottom:max(4px,env(safe-area-inset-bottom))}.camera-stages button,.camera-views button,.lens-stages button{min-height:36px}}
+@media(prefers-reduced-motion:reduce){#studio-root,.studio-header a,.studio-gesture{transition:none}}

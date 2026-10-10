@@ -1,0 +1,10 @@
+{
+  "name":"formnerd",
+  "private":true,
+  "type":"module",
+  "scripts":{
+    "build":"node scripts/build.mjs",
+    "test":"node --test tests/*.test.cjs"
+  },
+  "engines":{"node":">=22"}
+}

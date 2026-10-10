@@ -1,0 +1,74 @@
+[
+  {
+    "path": "camera/A11_sammenstilling_revA.glb",
+    "url": "https://formnerd-kamerastudio.lukketsvane.chatgpt.site/camera/A11_sammenstilling_revA.glb",
+    "sha256": "593d9531247126c06a23b0cb3a3e0312d853220c6dfd367f54455fdea4bbd4ec",
+    "bytes": 14508456
+  },
+  {
+    "path": "camera/A8_visning_revB.glb",
+    "url": "https://formnerd-kamerastudio.lukketsvane.chatgpt.site/camera/A8_visning_revB.glb",
+    "sha256": "3bfef07ed87af1043022e9fba4293b30395d35ffe5e751810e134d51e8451c40",
+    "bytes": 5460096
+  },
+  {
+    "path": "lens/canon-tv16.glb",
+    "url": "https://formnerd-kamerastudio.lukketsvane.chatgpt.site/lens/canon-tv16.glb",
+    "sha256": "e34ac39f0a4c0ae1911accec6f664f2d45580633d0f7b7bd15855897b91868e0",
+    "bytes": 8477416
+  },
+  {
+    "path": "lens/studio.hdr",
+    "url": "https://formnerd-kamerastudio.lukketsvane.chatgpt.site/lens/studio.hdr",
+    "sha256": "388106c4c9c5f65c7ce16f03c80a177088681a65d108f413a3ac6da8a94e5f4e",
+    "bytes": 98237
+  },
+  {
+    "path": "lens/poster.webp",
+    "url": "https://formnerd-kamerastudio.lukketsvane.chatgpt.site/lens/poster.webp",
+    "sha256": "d365fc680634130a0af8c25947cf692c7a1280b0c3974e7dc1b28825e7372641",
+    "bytes": 90816
+  },
+  {
+    "path": "lens/poster-portrait.webp",
+    "url": "https://formnerd-kamerastudio.lukketsvane.chatgpt.site/lens/poster-portrait.webp",
+    "sha256": "e5be334f7dff87cacedbed646f6ed4fc6904ae8b9f5a004766460b526cd70808",
+    "bytes": 49788
+  },
+  {
+    "path": "lens/focus.webp",
+    "url": "https://formnerd-kamerastudio.lukketsvane.chatgpt.site/lens/focus.webp",
+    "sha256": "62e09cac47f444964419264ffb4fa930ee58aa558a5ecf74b4e295b85034a7b1",
+    "bytes": 89178
+  },
+  {
+    "path": "lens/focus-portrait.webp",
+    "url": "https://formnerd-kamerastudio.lukketsvane.chatgpt.site/lens/focus-portrait.webp",
+    "sha256": "7f21b2fb5208c5872c8c6a9df83e4a1dc94bfe5d125822d3ef01a89715198164",
+    "bytes": 47646
+  },
+  {
+    "path": "lens/mechanics.webp",
+    "url": "https://formnerd-kamerastudio.lukketsvane.chatgpt.site/lens/mechanics.webp",
+    "sha256": "37be05a39ed13e07936ffae60b444ecaadad3598f89d7a6404ef4562938b8e6d",
+    "bytes": 44572
+  },
+  {
+    "path": "lens/mechanics-portrait.webp",
+    "url": "https://formnerd-kamerastudio.lukketsvane.chatgpt.site/lens/mechanics-portrait.webp",
+    "sha256": "50ee1ea7878d4b6144e2809e34e7ba43041c1d22ca3bd9ad81415e0b8c2cf52b",
+    "bytes": 33768
+  },
+  {
+    "path": "lens/optics.webp",
+    "url": "https://formnerd-kamerastudio.lukketsvane.chatgpt.site/lens/optics.webp",
+    "sha256": "731d7de9e74a4fafeffdb59e9af5c0070a48e1c576a7abb040748bbe53fdc2e5",
+    "bytes": 31168
+  },
+  {
+    "path": "lens/optics-portrait.webp",
+    "url": "https://formnerd-kamerastudio.lukketsvane.chatgpt.site/lens/optics-portrait.webp",
+    "sha256": "57d6c6cc43c3895cc6205bd64f86f71b2ac76453cdc247e1cdc93835c1bff683",
+    "bytes": 26198
+  }
+]

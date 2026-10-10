@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="nn" class="story">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Entropi er det utsida ikkje fortel om innsida. Ei visuell forteljing fram mot FormNerd-kameraet.">
+  <title>FormNerd · Frå entropi til form</title>
+  <link rel="stylesheet" href="style.css?v=17">
+  <script src="entropy-models.js" defer></script>
+  <script src="experiments.js?v=17" defer></script>
+  <script src="script.js?v=17" defer></script>
+</head>
+<body>
+  <h1 class="sr-only">FormNerd: Entropi, sporet og grensa</h1>
+  <main class="journey" id="journey" tabindex="0" aria-label="Forteljinga om entropi">
+    <section class="scene opening" id="entropi" aria-label="Entropi">
+      <div class="composition">
+        <figure class="visual"><canvas id="outside-canvas" role="img" aria-label="Eit auge ser utsida av ein sirkel. Eit spørsmål står att om innsida.">Me ser ei grense, men veit ikkje kva som er innanfor.</canvas></figure>
+        <div class="caption"><p>Entropi er det utsida ikkje fortel om innsida.</p></div>
+      </div>
+    </section>
+    <section class="scene branching" id="innsida" aria-label="Fleire moglege innsider">
+      <div class="composition">
+        <figure class="visual"><canvas id="inside-canvas" role="img" aria-label="Den same synlege utsida kan passe med tre ulike meldingar: 001, 010 eller 111.">Éi utside, fleire moglege innsider.</canvas></figure>
+        <div class="caption"><p>Fleire innsider kan passe.<br>Entropi måler uvissa mellom dei.</p></div>
+      </div>
+    </section>
+    <section class="scene binary" id="visst" aria-label="Ingen uvisse">
+      <div class="composition">
+        <figure class="visual"><canvas id="certain-canvas" role="img" aria-label="Ei kjelde gir alltid svaret 0. Sannsynet er 100 prosent.">Berre 0 er mogleg. Ingen uvisse.</canvas></figure>
+        <div class="caption"><p class="measure">0 <span>bit</span></p><p>Er svaret alltid 0,<br>er det ingenting att å finne ut.</p></div>
+      </div>
+    </section>
+    <section class="scene binary experiment" id="bit" aria-label="Sannsyn og uvisse">
+      <div class="composition">
+        <figure class="visual"><canvas id="bit-canvas" role="slider" tabindex="0" aria-label="Sannsynet for svaret 1" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-describedby="bit-copy bit-guide">0 og 1 er like sannsynlege. Pil venstre og høgre endrar sannsynet.</canvas></figure>
+        <div class="caption"><p class="gesture-cue" id="bit-guide" data-gesture="drag"><span class="gesture-motion" aria-hidden="true">↔</span><span class="gesture-label">Dra på figuren og endre sjansane</span></p><p class="measure"><output id="bit-h">1</output> <span>bit i snitt</span></p><p id="bit-copy">To like sannsynlege svar.<br>Størst uvisse før svaret.</p><div class="experiment-controls" role="group" aria-label="Utforsk sannsyn"><button type="button" data-probability="0.5" aria-pressed="true">Likt</button><button type="button" data-probability="0.1" aria-pressed="false">Skjevt</button><button type="button" class="action-button" id="bit-reveal">Trekk svar</button></div><p class="hint bit-result" id="bit-result" aria-live="polite">Entropi er overraskinga i gjennomsnitt.</p></div>
+      </div>
+    </section>
+    <section class="scene experiment" id="kunnskap" aria-label="Det me alt veit">
+      <div class="composition">
+        <figure class="visual"><canvas id="knowledge-canvas" role="img" aria-label="To observatørar ser det same sporet. Den eine kjenner svaret, den andre har to like sannsynlege alternativ." aria-describedby="knowledge-copy">Ulik forkunnskap gir ulik uvisse.</canvas></figure>
+        <div class="caption"><p class="gesture-cue" id="knowledge-guide" data-gesture="tap"><span class="gesture-motion" aria-hidden="true">⊙</span><span class="gesture-label">Trykk på figuren for å dele svaret</span></p><p id="knowledge-copy">Same spor.<br>Ulik uvisse med ulik forkunnskap.</p><div class="experiment-controls"><button type="button" class="action-button" id="knowledge-share">Del det du veit</button></div></div>
+      </div>
+    </section>
+    <section class="scene experiment" id="sporet" aria-label="Eit spor endrar sannsynet">
+      <div class="composition">
+        <figure class="visual"><canvas id="evidence-canvas" role="img" aria-label="A og B har begge 50 prosent sannsyn før sporet." aria-describedby="evidence-copy">Eit nytt spor endrar sannsynet frå 50 og 50 prosent til 75 og 25 prosent.</canvas></figure>
+        <div class="caption"><p class="gesture-cue" id="evidence-guide" data-gesture="tap"><span class="gesture-motion" aria-hidden="true">⊙</span><span class="gesture-label">Trykk på figuren for å vise sporet</span></p><p id="evidence-copy">To innsider passar like godt.<br>Sjå kva eitt spor kan endre.</p><p class="equation">H = <output id="evidence-h">1,000</output> bit</p><div class="experiment-controls"><button type="button" class="action-button" id="evidence-reveal">Vis sporet</button></div></div>
+      </div>
+    </section>
+    <section class="scene experiment" id="komprimering" aria-label="Komprimering med tap">
+      <div class="composition">
+        <figure class="visual"><canvas id="compression-canvas" role="img" aria-label="Fire originalar, 00, 01, 10 og 11, blir sende til to kodar når berre første bit er att." aria-describedby="compression-copy">00 og 01 gir begge 0. 10 og 11 gir begge 1.</canvas></figure>
+        <div class="caption"><p class="gesture-cue" id="compression-guide" data-gesture="drag"><span class="gesture-motion" aria-hidden="true">↔</span><span class="gesture-label">Dra mot høgre for å hente fram b</span></p><p id="compression-copy">Me kjenner a.<br>Men b kan framleis vere 0 eller 1.</p><p class="equation">H(X | Y) = <output id="compression-h">1</output> bit</p><div class="experiment-controls" role="group" aria-label="Kva bitar skal koden halde på?"><button type="button" data-compression="one" aria-pressed="true">Éin bit</button><button type="button" data-compression="both" aria-pressed="false">Begge</button></div></div>
+      </div>
+    </section>
+    <section class="scene experiment" id="skala" aria-label="Sierpinski og finare oppløysing">
+      <div class="composition">
+        <figure class="visual"><canvas id="sierpinski-canvas" role="img" aria-label="Sierpinski-trekanten delt i tre like sannsynlege delar." aria-describedby="scale-copy">Kvar trekant blir delt i tre mindre trekantar.</canvas></figure>
+        <div class="caption"><p class="gesture-cue" id="scale-guide" data-gesture="drag"><span class="gesture-motion" aria-hidden="true">↔</span><span class="gesture-label">Dra mot høgre for fleire delar</span></p><p id="scale-copy">Eit punkt er skjult i éin av delane.<br>Fleire delar, fleire moglege svar.</p><p class="equation equation-sequence"><span>N = <output id="scale-count">3</output></span><span>H = <output id="scale-entropy">1,585</output> bit</span></p><div class="experiment-controls" role="group" aria-label="Endre oppløysinga"><button type="button" id="scale-less">Grovare</button><button type="button" id="scale-more">Finare</button><output id="scale-level">n = 1</output></div></div>
+      </div>
+    </section>
+    <section class="scene experiment" id="mandelbrot" aria-label="Mandelbrotmengda">
+      <div class="composition">
+        <figure class="visual"><canvas id="mandelbrot-canvas" role="img" tabindex="0" aria-label="Mandelbrotmengda. Piltastane flyttar utsnittet, pluss og minus zoomar, Home nullstiller." aria-describedby="mandelbrot-copy">Mandelbrotmengda. Bruk knappane under for å zoome inn og ut.</canvas></figure>
+        <div class="caption"><p class="gesture-cue" id="mandel-guide" data-gesture="zoom"><span class="gesture-motion" aria-hidden="true">⤢</span><span class="gesture-label">Knip eller dobbelttrykk for å zoome</span></p><p id="mandelbrot-copy">Gå nærare grensa.<br>Fleire skilnader kjem til syne.</p><p class="equation equation-sequence"><span>z<sub>0</sub> = 0</span><span>z<sub>n+1</sub> = z<sub>n</sub><sup>2</sup> + c</span></p><div class="experiment-controls" role="group" aria-label="Utforsk Mandelbrotmengda"><button type="button" id="mandel-in" aria-label="Zoom inn">+</button><button type="button" id="mandel-out" aria-label="Zoom ut">−</button><button type="button" id="mandel-reset">Nullstill</button><output id="mandel-zoom">1×</output></div></div>
+      </div>
+    </section>
+    <section class="scene experiment" id="kaos" aria-label="Den logistiske avbildinga">
+      <div class="composition">
+        <figure class="visual"><canvas id="chaos-canvas" role="slider" tabindex="0" aria-label="Parameter r i den logistiske avbildinga" aria-valuemin="2.5" aria-valuemax="4" aria-valuenow="3.9" aria-describedby="chaos-copy chaos-guide">Bifurkasjonar frå ein stabil tilstand gjennom periodedobling til kaos. Pil venstre og høgre endrar r.</canvas></figure>
+        <div class="caption"><p class="gesture-cue" id="chaos-guide" data-gesture="drag"><span class="gesture-motion" aria-hidden="true">↔</span><span class="gesture-label">Dra markøren mellom ro og kaos</span></p><p id="chaos-copy">Regelen er kjend.<br>Nesten like startar kan gi ulike baner.</p><p class="equation">x<sub>n+1</sub> = r x<sub>n</sub>(1 − x<sub>n</sub>)</p><div class="experiment-controls" role="group" aria-label="Vel parameter r"><button type="button" data-r="2.8" aria-pressed="false">Ro</button><button type="button" data-r="3.2" aria-pressed="false">Rytme</button><button type="button" data-r="3.9" aria-pressed="true">Kaos</button><output id="chaos-r">r = 3,90</output></div></div>
+      </div>
+    </section>
+    <section class="scene experiment" id="forventning" aria-label="Rett modell, uvisse att">
+      <div class="composition">
+        <figure class="visual"><canvas id="expectation-canvas" role="slider" tabindex="0" aria-label="Modellen sitt sannsyn for 1" aria-valuemin="5" aria-valuemax="95" aria-valuenow="50" aria-describedby="expectation-copy expectation-guide">Kjelda gir 0 og 1 med 50 prosent sannsyn. Modellen kan vente noko anna.</canvas></figure>
+        <div class="caption"><p class="gesture-cue" id="expectation-guide" data-gesture="drag"><span class="gesture-motion" aria-hidden="true">↔</span><span class="gesture-label">Dra skiljet mellom 0 og 1</span></p><p id="expectation-copy">Modellen kjenner sjansane.<br>Neste svar er framleis uvisst.</p><p class="equation">H(p, q) = <output id="expectation-total">1,000</output> bit</p><div class="experiment-controls" role="group" aria-label="Endre forventninga"><button type="button" data-expectation="0.5" aria-pressed="true">Rett modell</button><button type="button" data-expectation="0.9" aria-pressed="false">Skeiv modell</button></div><p class="hint" id="expectation-parts">1 bit uvisse + 0,000 bit modellavvik (KL).</p></div>
+      </div>
+    </section>
+    <section class="scene experiment" id="innsyn" aria-label="Forma styrer innsynet">
+      <div class="composition">
+        <figure class="visual"><canvas id="aperture-canvas" role="slider" tabindex="0" aria-label="Djupna bak opninga" aria-valuemin="0" aria-valuemax="100" aria-valuenow="35" aria-describedby="aperture-copy">Eit snitt gjennom ei opning. Meir djupn skjuler meir av innsida frå den same synsvinkelen.</canvas></figure>
+        <div class="caption"><p class="gesture-cue" id="aperture-guide" data-gesture="drag"><span class="gesture-motion" aria-hidden="true">↔</span><span class="gesture-label">Dra på figuren og endre djupna</span></p><p id="aperture-copy">Opninga er den same.<br>Djupna endrar kva me ser.</p><div class="experiment-controls" role="group" aria-label="Endre djupna"><button type="button" id="aperture-open">Grunn</button><button type="button" id="aperture-hide">Djup</button><output id="aperture-state">Delvis innsyn</output></div></div>
+      </div>
+    </section>
+    <section class="scene experiment closing" id="kameraet" aria-label="Frå spor til kamera">
+      <div class="composition">
+        <figure class="visual"><canvas id="form-canvas" role="slider" tabindex="0" aria-label="Roter forma og sjå korleis opninga endrar seg" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">Eit synleg spor og ei opning som held innsida skjult.</canvas></figure>
+        <div class="caption"><p class="gesture-cue" data-gesture="drag"><span class="gesture-motion" aria-hidden="true">↔</span><span class="gesture-label">Dra og sjå forma frå sida</span></p><p>Ei opning.<br>Noko kjem til syne.<br>Noko står att.</p><a class="camera-link" href="/kamera">Utforsk kameraet <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+  </main>
+  <nav class="journey-controls" aria-label="Framdrift"><div class="progress" aria-hidden="true"><span id="progress-fill"></span></div><a class="next-scene" id="next-scene" href="#innsida" aria-label="Neste scene"><span class="nav-arrow" aria-hidden="true">↓</span></a></nav>
+</body>
+</html>

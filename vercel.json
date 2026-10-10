@@ -1,0 +1,15 @@
+{
+  "framework":null,
+  "buildCommand":"node scripts/build.mjs",
+  "installCommand":"echo No dependencies required",
+  "outputDirectory":"dist",
+  "rewrites":[
+    {"source":"/kamera","destination":"/studio/index.html"},
+    {"source":"/canon50mm","destination":"/studio/index.html"},
+    {"source":"/a8","destination":"/studio/index.html"}
+  ],
+  "headers":[
+    {"source":"/camera/:path*","headers":[{"key":"Cache-Control","value":"public, max-age=31536000, immutable"}]},
+    {"source":"/lens/:path*","headers":[{"key":"Cache-Control","value":"public, max-age=31536000, immutable"}]}
+  ]
+}
