@@ -19,6 +19,8 @@ a:focus-visible,button:focus-visible{outline:none;text-decoration:underline;text
 .studio-loading a{min-height:44px;display:grid;place-content:center;color:#fff}
 .camera-stages button,.camera-views button,.lens-stages button{min-height:44px}
 .camera-study,.lens-study{bottom:max(12px,env(safe-area-inset-bottom));width:min(420px,100% - 36px)}
+.lens-study{pointer-events:none}
+.lens-controls,.lens-stages{pointer-events:auto}
 .camera-canvas{outline:none}
 .camera-canvas:focus-visible{outline:none}
 .camera-state{padding:24px;text-align:center}
