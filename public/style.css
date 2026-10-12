@@ -181,4 +181,13 @@ p+p{margin-top:18px}
 .nav-arrow{display:block;font-size:29px;line-height:1;font-weight:200}
 .next-scene.restart .nav-arrow{transform:rotate(180deg)}
 .progress{background:#191919}.progress span{background:#eee}
+.editorial-scene .composition{gap:clamp(20px,3vh,32px)}
+.enhanced .editorial-scene .visual{width:min(100%,740px);height:auto;aspect-ratio:823/410;flex:none}
+.bit-flow-art{width:100%;height:100%;background:url("bit-flow-art.jpg") top center/100% auto no-repeat}
+.editorial-scene .caption{width:min(100%,740px);align-self:center}
+.editorial-equation{font-family:Georgia,"Times New Roman",serif;font-size:clamp(38px,7vw,78px);line-height:1.05;letter-spacing:-.045em;white-space:nowrap}
+.editorial-variables{font-family:Georgia,"Times New Roman",serif;color:#aaa;font-size:clamp(21px,3vw,29px);line-height:1.45;letter-spacing:-.02em;margin-top:clamp(16px,3vh,28px)}
+.editorial-copy{max-width:33ch;font-size:clamp(19px,2.8vw,31px);line-height:1.27;letter-spacing:-.03em;margin-top:clamp(24px,5vh,50px)}
+.enhanced .editorial-scene .composition{padding-top:max(20px,env(safe-area-inset-top));gap:clamp(20px,3vh,32px)}
+@media(max-height:600px){.enhanced .editorial-scene .composition{gap:12px;padding-top:10px}.editorial-variables{margin-top:10px}.editorial-copy{margin-top:12px}}
 @media(max-height:600px){.enhanced .composition{padding-top:12px;gap:12px}.caption,.experiment .caption{font-size:18px}.opening .caption{font-size:26px}.gesture-cue{margin-bottom:6px}.equation{margin-top:7px;font-size:18px}.experiment-controls{margin-top:4px}.camera-link{margin-top:14px}}

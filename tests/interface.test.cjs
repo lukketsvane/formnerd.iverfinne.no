@@ -155,7 +155,8 @@ let selectionBlocked=false,dragBlocked=false;
 journey.emit('selectstart',{preventDefault(){selectionBlocked=true;}});journey.emit('dragstart',{preventDefault(){dragBlocked=true;}});
 assert.ok(selectionBlocked&&dragBlocked);
 assert.ok(!html.includes('class="colophon"'));assert.ok(!/<img|<svg|\.png|\.svg/i.test(html));
-assert.deepEqual(scenes.map(scene=>scene.id),['entropi', 'innsida', 'visst', 'bit', 'kunnskap', 'sporet', 'komprimering', 'skala', 'mandelbrot', 'kaos', 'forventning', 'innsyn', 'kameraet']);
+assert.deepEqual(scenes.map(scene=>scene.id),['entropi', 'innsida', 'visst', 'bit', 'kunnskap', 'sporet', 'komprimering', 'restbit', 'skala', 'mandelbrot', 'kaos', 'forventning', 'innsyn', 'kameraet']);
+assert.ok(html.includes('Når me berre beheld første bit av to uavhengige, jamt fordelte bitar'));
 motion.matches=false;
 for(const id of ['entropi','innsida','bit','visst','skala','mandelbrot','innsida']){journey.scrollTo({top:byId(id).offsetTop});tick();tick();}
 flush();assert.equal(active()[0].id,'innsida');assert.equal(scenes.filter(scene=>scene.classList.contains('is-neighbor')).length,0);
@@ -244,4 +245,4 @@ for(let step=0;step<=20;step++){
   assert.ok(!(branches&&eye),'the observer and possible answers never overlap visibly');
 }
 drawing.recording=false;
-console.log('PASS: discoverable gesture cues wait for the settled scene, stay quiet after use, respect reduced motion, stop offscreen, and never change model values; direct split dragging follows the finger; animated presets interpolate; nonoverlapping observer transition, cross entropy, Bayesian evidence, continuously readable transition captions, probability, weighted surprise, knowledge sharing, lifecycle suspension, position restoration, width-only resize, stale flick prevention and 13 scenes, top sizing, reversible scroll transitions, selection prevention, navigation, resize, reduced motion, direction locking, cancelled drags, compression, interrupted refinement, chaos, double tap, pan, anchored pinch, bounded worker requests and aperture depth. Mock DOM only; no browser layout assertion.');
+console.log('PASS: discoverable gesture cues wait for the settled scene, stay quiet after use, respect reduced motion, stop offscreen, and never change model values; direct split dragging follows the finger; animated presets interpolate; nonoverlapping observer transition, cross entropy, Bayesian evidence, continuously readable transition captions, probability, weighted surprise, knowledge sharing, lifecycle suspension, position restoration, width-only resize, stale flick prevention and 14 scenes, top sizing, reversible scroll transitions, selection prevention, navigation, resize, reduced motion, direction locking, cancelled drags, compression, interrupted refinement, chaos, double tap, pan, anchored pinch, bounded worker requests and aperture depth. Mock DOM only; no browser layout assertion.');

@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#000000">
   <meta name="description" content="Entropi er det utsida ikkje fortel om innsida. Ei visuell forteljing fram mot FormNerd-kameraet.">
   <title>FormNerd · Frå entropi til form</title>
-  <link rel="stylesheet" href="style.css?v=17">
+  <link rel="stylesheet" href="style.css?v=18">
   <script src="entropy-models.js" defer></script>
   <script src="experiments.js?v=17" defer></script>
   <script src="script.js?v=17" defer></script>
@@ -54,6 +54,12 @@
       <div class="composition">
         <figure class="visual"><canvas id="compression-canvas" role="img" aria-label="Fire originalar, 00, 01, 10 og 11, blir sende til to kodar når berre første bit er att." aria-describedby="compression-copy">00 og 01 gir begge 0. 10 og 11 gir begge 1.</canvas></figure>
         <div class="caption"><p class="gesture-cue" id="compression-guide" data-gesture="drag"><span class="gesture-motion" aria-hidden="true">↔</span><span class="gesture-label">Dra mot høgre for å hente fram b</span></p><p id="compression-copy">Me kjenner a.<br>Men b kan framleis vere 0 eller 1.</p><p class="equation">H(X | Y) = <output id="compression-h">1</output> bit</p><div class="experiment-controls" role="group" aria-label="Kva bitar skal koden halde på?"><button type="button" data-compression="one" aria-pressed="true">Éin bit</button><button type="button" data-compression="both" aria-pressed="false">Begge</button></div></div>
+      </div>
+    </section>
+    <section class="scene editorial-scene" id="restbit" aria-label="Ein bit står att">
+      <div class="composition">
+        <figure class="visual"><div class="bit-flow-art" role="img" aria-label="Små lysande kvadrat samlar seg til større ruter, medan noko informasjon blir borte."></div></figure>
+        <div class="caption"><p class="editorial-equation"><i>H</i>(<i>X</i> | <i>Y</i>) = 1 bit</p><p class="editorial-variables"><i>X</i> = (<i>a</i>, <i>b</i>)<br><i>Y</i> = <i>a</i></p><p class="editorial-copy">Når me berre beheld første bit av to uavhengige, jamt fordelte bitar, står den andre att som uvisse. Koden åleine kan ikkje avgjere originalen.</p></div>
       </div>
     </section>
     <section class="scene experiment" id="skala" aria-label="Sierpinski og finare oppløysing">
