@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="nn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2f0ea">
+  <meta name="description" content="A15 formstudie: originalt utkast, teksturert modell og ei avgrensa studie av skjermlaus bakflate.">
+  <title>FormNerd · A15 formstudie</title>
+  <link rel="stylesheet" href="/a15/study.css">
+  <script type="module" src="/a15/study.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/">FormNerd.</a>
+      <nav aria-label="Hovudnavigasjon"><a href="/kamera">Kamerastudio</a><a href="#form">Utforsk forma</a></nav>
+      <span class="header-tag">A15 / FORMSTUDIE</span>
+    </div>
+  </header>
+  <main>
+    <section class="intro wrap" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">A15 / INDUSTRIELL FORMGJEVING</p>
+        <h1 id="page-title">Forma<br>først.</h1>
+      </div>
+      <div class="intro-copy">
+        <p class="lead">Eit grep som blir hugsa. Ein skrå utløysar under peikefingeren. Eit kamerahus forma rundt handa.</p>
+        <p>Dette er ei visuell studie av det opphavlege A15-utkastet og ei ny skjermlaus bakflate. Ingen av visingane er eit ferdig Rev E-kamera.</p>
+      </div>
+    </section>
+    <section class="study" id="form" aria-labelledby="study-heading">
+      <div class="wrap">
+        <div class="section-head"><p class="eyebrow">01 / FORM I ARBEID</p><h2 id="study-heading">Frå utkast til skjermlaus form.</h2></div>
+        <div class="stage-buttons" role="group" aria-label="Vel formvising">
+          <button type="button" data-stage="reference" aria-controls="stage-reference" aria-pressed="true"><span>01</span>Referansefoto</button>
+          <button type="button" data-stage="source" aria-controls="stage-source" aria-pressed="false"><span>02</span>Formutkast</button>
+          <button type="button" data-stage="screenless" aria-controls="stage-screenless" aria-pressed="false"><span>03</span>Skjermlaus bakflate</button>
+        </div>
+        <article class="stage-panel" id="stage-reference" data-panel="reference" aria-labelledby="reference-title">
+          <div class="stage-copy"><p class="panel-number">01 / OPPHAVLEG VISUELL RETNING</p><h3 id="reference-title">Ei samanhengande form.</h3><p>Referansefotoet styrer silhuetten: ribbene rundt grepet, den skrå krona, den sveipande skuldra og den kompakte fronten.</p><p class="note">Den heva silhuetten blir verande. Søkjaropninga som er synleg her er frå det tidlege utkastet og treng ei lukka løysing i Rev E.</p></div>
+          <figure class="stage-figure photo"><img src="/a15/assets/photo-1.jpg" width="1280" height="853" alt="Opphavleg A15-referansefoto med ribba grep, skrå utløysar, to hjul og sveipande skulder."><figcaption>Opphavleg referansefoto · visuell formretning, ikkje ferdig kamera.</figcaption></figure>
+        </article>
+        <article class="stage-panel" id="stage-source" data-panel="source" aria-labelledby="source-title" hidden>
+          <div class="stage-copy"><p class="panel-number">02 / FORMA I DEI LEVERTE MODELLANE</p><h3 id="source-title">Same utkast, to uttrykk.</h3><p>A15_06 viser den teksturerte A15_03-forma. Den grå A15_03-visinga let oss lese volum, grep og kontrollplassering utan overflatefinish.</p><p class="note">Begge er kjeldemodellar frå før den skjermlause Rev E-bakflata. Den gamle søkjarforma og bakpanelet er berre referanse.</p><div class="view-buttons" role="group" aria-label="Vel vinkel"><button type="button" data-view="front" aria-pressed="true">Framanfrå</button><button type="button" data-view="rear" aria-pressed="false">Bakfrå</button></div></div>
+          <div class="model-pair"><figure class="stage-figure"><img id="textured-view" src="/a15/assets/a15-06-front.png" width="1024" height="768" alt="Teksturert A15_06-kjeldemodell sett skrått framanfrå."><figcaption>A15_06 · teksturert kjeldemodell</figcaption></figure><figure class="stage-figure"><img id="mesh-view" src="/a15/assets/a15-03-front.png" width="1024" height="768" alt="Grå A15_03-kjeldemodell sett skrått framanfrå."><figcaption>A15_03 · original geometri</figcaption></figure></div>
+        </article>
+        <article class="stage-panel" id="stage-screenless" data-panel="screenless" aria-labelledby="screenless-title" hidden>
+          <div class="stage-copy"><p class="panel-number">03 / REV E · AVGRENSA FLATESTUDIE</p><h3 id="screenless-title">Ei bakside utan skjerm.</h3><p>Den turkise flata er ei faktisk CAD-studie som erstattar skjermfeltet med ei roleg, samanhengande bakflate.</p><p class="note">Grått er A15_03-utkastet som kontekst. Den gamle søkjaropninga er ikkje lukka i denne delstudien. Den nye flata er enno ikkje sett saman med eit ferdig hus.</p><div class="legend"><span><i class="swatch new"></i>Rev E bakflate</span><span><i class="swatch old"></i>Originalutkast</span></div></div>
+          <figure class="stage-figure"><img src="/a15/assets/rev-e-rear-context.png" width="1400" height="1000" alt="Turkis CAD-flate for skjermlaus A15-bakside vist mot grått opphavleg utkast med eldre søkjarhus."><figcaption>Rev E bakflate i kjeldekontekst · avgrensa flate, ikkje komplett modell.</figcaption></figure>
+        </article>
+      </div>
+    </section>
+    <section class="controls wrap" aria-labelledby="controls-title">
+      <div class="section-head"><p class="eyebrow">02 / HAND OG KONTROLL</p><div><h2 id="controls-title">Handa styrer forma.</h2><p class="section-intro">Høgre tommel kviler på den bogne bakdelen medan venstre hand støttar objektivet. Plasseringane og kjensla må prøvast på ein fullskalamodell.</p></div></div>
+      <ol class="control-list">
+        <li><span>01 / GREP</span><h3>Ribba grep</h3><p>Midt- og ringfinger finn fordjupinga framme på grepet. Ribbeprofilen er enno ikkje prøvd i handa.</p></li>
+        <li><span>02 / UTLØYSAR</span><h3>Skrå krone</h3><p>Peikefingeren finn ein totrinns utløysar på den skrå krona. Vinkel og kraft er designintensjon, ikkje testa mekanikk.</p></li>
+        <li><span>03 / INNSTILLING</span><h3>To topphjul</h3><p>Hjulet nær grepet er tenkt for lukkartid, det andre for blendar. Avstand og motstand er ikkje fastlagde.</p></li>
+        <li><span>04 / TOMMEL</span><h3>Bakre knapp</h3><p>Tommelen når ein bakre knapp tenkt for fokus- eller eksponeringslås. Plasseringa følgjer den skjermlause forma.</p></li>
+        <li><span>05 / TILBEHØYR</span><h3>Avtakbar telefon</h3><p>Ein iPhone kan tenkjast på den eksisterande toppskinna eller separat ved sida av stativet. Feste, balanse og innsyn er ikkje validerte.</p></li>
+      </ol>
+    </section>
+  </main>
+  <footer><div class="wrap footer-inner"><div><a class="brand" href="/">FormNerd.</a><p>A15 formstudie · originalutkast og avgrensa Rev E-bakflate.</p></div><a href="/bygg">Prosjektstatus →</a></div></footer>
+</body>
+</html>

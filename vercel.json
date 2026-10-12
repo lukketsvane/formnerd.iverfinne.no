@@ -9,6 +9,7 @@
     {"source":"/a8","destination":"/studio/index.html"},
     {"source":"/a9","destination":"/studio/index.html"},
     {"source":"/a10","destination":"/studio/index.html"},
+    {"source":"/a15","destination":"/a15/index.html"},
     {"source":"/bygg","destination":"/bygg/index.html"}
   ],
   "headers":[
