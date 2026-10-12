@@ -27,4 +27,4 @@ for(let offset=0;offset<assets.length;offset+=4){
     console.log(`Verified ${asset.path} (${bytes.length} bytes)`);
   }));
 }
-console.log('Built the narrative and all five studio routes.');
+console.log('Built the narrative, five studio routes and A15 build page.');

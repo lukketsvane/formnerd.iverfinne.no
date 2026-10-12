@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="nn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2f0ea">
+  <meta name="description" content="FormNerd A15: skjermlaust ope kameraprosjekt, iPhone-søkjar, konkret komponentliste og verifiserbare utviklingsportar.">
+  <title>FormNerd · A15 bygg</title>
+  <style>
+    :root{font-family:Arial,Helvetica,sans-serif;color:#171715;background:#f2f0ea}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0}
+    a{color:inherit;text-underline-offset:3px}
+    a:focus-visible{outline:2px solid #cb5629;outline-offset:4px}
+    .wrap{width:min(1160px,calc(100% - 48px));margin:auto}
+    header{border-bottom:1px solid #d4d0c7}
+    header .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:76px}
+    .brand{font-size:21px;font-weight:800;letter-spacing:-.07em;text-decoration:none}
+    nav{display:flex;gap:24px;align-items:center;font-size:13px}
+    nav a{text-decoration:none}
+    nav a:hover{text-decoration:underline}
+    .tag,.eyebrow,.label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+    .tag{padding:10px 13px;border:1px solid #bd4a22;color:#a33a18;white-space:nowrap}
+    .hero{padding:90px 0 78px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(240px,.75fr);gap:9%}
+    .eyebrow{color:#a33a18;margin:0 0 24px}
+    h1{font-size:clamp(58px,8.8vw,132px);letter-spacing:-.09em;line-height:.91;margin:0;max-width:850px}
+    .lead{font-size:clamp(20px,2.2vw,30px);line-height:1.26;letter-spacing:-.035em;max-width:620px;margin:34px 0 0}
+    .hero-side{align-self:end;border-top:1px solid #191919;padding-top:20px}
+    .hero-side p{font-size:15px;line-height:1.55;margin:0 0 22px}
+    .hero-side a{font-weight:700;font-size:13px}
+    .hero-side .links{display:grid;gap:12px;justify-items:start}
+    .rule{border-top:1px solid #171715}
+    section{padding:68px 0 78px}
+    .section-head{display:grid;grid-template-columns:1fr 2fr;gap:8%;margin-bottom:42px}
+    h2{font-size:clamp(32px,4vw,56px);letter-spacing:-.065em;line-height:1.04;margin:0}
+    .section-head p{margin:0;max-width:660px;font-size:16px;line-height:1.55}
+    .flow{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid #171715}
+    .flow article{min-height:238px;padding:25px;display:flex;flex-direction:column;justify-content:space-between}
+    .flow article+article{border-left:1px solid #171715}
+    .flow .number{font-size:12px;font-weight:700}
+    .flow h3{font-size:clamp(24px,2.7vw,38px);line-height:1.05;letter-spacing:-.055em;margin:0 0 12px}
+    .flow p{font-size:13px;line-height:1.5;max-width:280px;margin:0}
+    .flow article:nth-child(2){background:#dfdad0}
+    .flow article:nth-child(3){background:#191919;color:#f2f0ea}
+    .technical{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px;font-size:12px;line-height:1.4}
+    .technical span{border:1px solid #c6c0b4;padding:8px 10px}
+    .price-note{padding:18px 22px;background:#e4e0d7;margin-bottom:26px;font-size:14px;line-height:1.5}
+    .table-scroll{overflow:auto;border-top:1px solid #171715;border-bottom:1px solid #171715}
+    table{width:100%;border-collapse:collapse;min-width:730px;text-align:left}
+    th{font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:18px 14px 18px 0}
+    td{padding:16px 14px 16px 0;border-top:1px solid #d3cec4;font-size:14px;line-height:1.35;vertical-align:top}
+    td:last-child,th:last-child{text-align:right;padding-right:0;white-space:nowrap}
+    td a{font-weight:700}
+    .total{display:flex;justify-content:space-between;gap:20px;align-items:baseline;padding:23px 0;font-weight:700}
+    .total strong{font-size:32px;letter-spacing:-.04em}
+    .small{font-size:12px;line-height:1.55;color:#55524e}
+    .inventory{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .inventory article{border-top:1px solid #171715;padding:20px 0 12px}
+    .inventory h3{font-size:21px;letter-spacing:-.035em;margin:0 0 12px}
+    .inventory p{font-size:14px;line-height:1.55;margin:0;max-width:430px}
+    .gates{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .gates article{background:#e4e0d7;padding:20px;min-height:142px;display:flex;flex-direction:column;justify-content:space-between}
+    .gates h3{font-size:16px;margin:0;letter-spacing:-.02em}
+    .gates p{font-size:12px;line-height:1.45;margin:10px 0 0}
+    .state{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.11em;color:#a33a18;margin-top:16px}
+    footer{background:#171715;color:#f2f0ea;padding:38px 0 45px}
+    footer .wrap{display:flex;justify-content:space-between;gap:30px;align-items:baseline}
+    footer p{font-size:12px;line-height:1.5;max-width:500px;margin:0;color:#d3cec4}
+    @media(max-width:760px){.wrap{width:min(1160px,calc(100% - 32px))}header .wrap{min-height:70px;flex-wrap:wrap;padding:12px 0}nav{gap:14px}.hero{display:block;padding:62px 0 50px}.hero-side{margin-top:48px}.section-head{display:block}.section-head p{margin-top:20px}.flow{grid-template-columns:1fr}.flow article{min-height:170px}.flow article+article{border-left:0;border-top:1px solid #171715}.inventory,.gates{grid-template-columns:1fr 1fr}section{padding:50px 0 55px}}
+    @media(max-width:520px){h1{font-size:clamp(44px,12.5vw,60px)}.inventory,.gates{grid-template-columns:1fr}footer .wrap{display:block}footer p{margin-top:16px}.tag{font-size:9px}nav{font-size:11px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <a class="brand" href="/">FormNerd.</a>
+      <nav aria-label="Prosjekt">
+        <a href="/kamera">Kamerastudio</a>
+        <a href="#delar">Delar og pris</a>
+        <a href="#kontroll">Kontroll</a>
+      </nav>
+      <span class="tag">A15 · Utvikling</span>
+    </div>
+  </header>
+  <main>
+    <div class="wrap hero">
+      <div>
+        <p class="eyebrow">Ope kameraprosjekt / Rev E</p>
+        <h1>Kameraet<br>utan skjerm.</h1>
+        <p class="lead">Forma kjem frå FormNerd. iPhone blir søkjar. Kvar kjøpedel, kopling og test skal kunne sporast.</p>
+      </div>
+      <div class="hero-side">
+        <p>A15 er eit aktivt ingeniørprosjekt. Det finst enno ikkje eit bygd kamera, målt biletyting eller godkjend produksjonsmodell. Endelege produktrenderar kjem etter kontroll av form, optikk, elektronikk, montering og førsteartikkel.</p>
+        <div class="links"><a href="#arkitektur">Sjå arkitekturen ↓</a><a href="https://github.com/lukketsvane/formnerd.iverfinne.no/tree/main/open-camera">Open API og appkjelde ↗</a></div>
+      </div>
+    </div>
+    <div class="rule"></div>
+    <section id="arkitektur" class="wrap">
+      <div class="section-head"><span class="label">01 / System</span><div><h2>Tre delar. Eitt kamera.</h2><p>Første integrasjonskandidat er ein skjermlaus Sony ILX-LR1 med E-fatning og RAW-opptak. Ein Linux-brubyggjar tek imot søkjarbilete og kontroll frå Sony sitt SDK. Telefonen snakkar med vår eigen opne IP-protokoll.</p></div></div>
+      <div class="flow">
+        <article><span class="number">01 / Lys og opptak</span><div><h3>Optikk + 61 MP kjerne</h3><p>E-objektiv og Sony ILX-LR1. Kjøpt, proprietær biletkjerne. Det fysiske A15-huset skal ikkje bere objektivet via printa plast.</p></div></article>
+        <article><span class="number">02 / Opent mellomlag</span><div><h3>Linux-bru</h3><p>Raspberry Pi, USB-kontroll og ein A15-protokoll som kan køyrast utan skya. RAW blir lagra på kameraet. Sony-SDK og lisens må kvalifiserast.</p></div></article>
+        <article><span class="number">03 / Søkjar</span><div><h3>iPhone</h3><p>Same app over lokal Wi-Fi og USB-C via Ethernet-adapter. Telefonen viser førehandsvising og styrer kameraet; RAW-originalen ligg på kameraet.</p></div></article>
+      </div>
+      <div class="technical"><span>Inga innebygd LCD/EVF</span><span>Ingen internett-teneste påkravd</span><span>Direkte éin-kabel USB-C er uprøvd</span><span>Fysisk utløysar skal fungere utan telefon</span></div>
+    </section>
+    <div class="rule"></div>
+    <section id="delar" class="wrap">
+      <div class="section-head"><span class="label">02 / Innkjøp</span><div><h2>Faktiske prisar på faktiske delar.</h2><p>Ei datert prisbok for den første funksjonsbenken. Ho skil mellom komponentar med offentleg utsalspris og dei delane som må konstruerast og få bindande tilbod før eit fullstendig A15-kamera kan prisast.</p></div></div>
+      <div class="price-note">Prisstatus 12. oktober 2026. Éin av kvar del, med eksakt publisert pris hos lenkja amerikansk seljar. Desse delane er valde for ein funksjonsbenk med skjermlaus kamerakjerne, Linux-bru og to iPhone-samband. Dei er enno ikkje prøvde saman. Prisane er i USD før amerikansk salsavgift, norsk import, frakt og eventuell toll. iPhone og HDMI-servicemonitor er ikkje medrekna. Uvalde produktdelar er ikkje sett til null.</div>
+      <div class="table-scroll"><table>
+        <thead><tr><th scope="col">Del / SKU</th><th scope="col">Funksjon</th><th scope="col">Seljar</th><th scope="col">Status</th><th scope="col">Pris</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://www.bhphotovideo.com/c/product/1785754-REG/sony_ilx_lr1_industrial_camera.html">Sony ILX-LR1</a></td><td>61 MP biletkjerne, E-fatning, lukkar</td><td>B&amp;H, USA</td><td>På lager</td><td>USD 3 298,00</td></tr>
+          <tr><td><a href="https://www.bhphotovideo.com/c/product/1242613-REG/sony_sel50f18f_fe_50mm_f_1_8_lens.html">Sony SEL50F18F/2</a></td><td>Fullformat 50 mm f/1,8</td><td>B&amp;H, USA</td><td>På lager</td><td>USD 198,00</td></tr>
+          <tr><td><a href="https://www.bhphotovideo.com/c/product/1945437-REG/sandisk_sdsdxv9_256g_gucin_256gb_extreme_uhs_i_sd.html">SanDisk SDSDXV9-256G-GUCIN</a></td><td>256 GB SD for kamera-RAW</td><td>B&amp;H, USA</td><td>På lager</td><td>USD 79,99</td></tr>
+          <tr><td><a href="https://www.pishop.us/product/raspberry-pi-5-4gb/">Raspberry Pi 5, 4 GB</a></td><td>Linux-bru med USB 3, Wi-Fi og Ethernet</td><td>PiShop, USA</td><td>På lager</td><td>USD 110,00</td></tr>
+          <tr><td><a href="https://www.pishop.us/product/class-10-microsd-card-with-raspberry-pi-os-bookworm-32gb/">32 GB Pi OS microSD</a></td><td>Oppstart for Linux-brua</td><td>PiShop, USA</td><td>På lager</td><td>USD 19,95</td></tr>
+          <tr><td><a href="https://www.pishop.us/product/raspberry-pi-27w-usb-c-power-supply-white-us/">Raspberry Pi 27 W USB-C PSU</a></td><td>Separat 5,1 V til Pi 5</td><td>PiShop, USA</td><td>På lager</td><td>USD 12,95</td></tr>
+          <tr><td><a href="https://www.pishop.us/product/raspberry-pi-active-cooler/">Raspberry Pi Active Cooler</a></td><td>Kjøling av Linux-brua</td><td>PiShop, USA</td><td>På lager</td><td>USD 10,95</td></tr>
+          <tr><td><a href="https://www.bhphotovideo.com/c/product/1627063-REG/sony_149324435_ac_adaptor_ac_ues1230m_t.html">Sony AC-UES1230MT</a></td><td>Separat 12 V kameraforsyning</td><td>B&amp;H, USA</td><td>På lager</td><td>USD 99,99</td></tr>
+          <tr><td><a href="https://www.bhphotovideo.com/c/product/1858347-REG/pearstone_usb32_6cmam3_usb_c_3_2_to_usb_a.html">Pearstone USB32-6CMAM3</a></td><td>USB-A til USB-C, kamera → Pi</td><td>B&amp;H, USA</td><td>På lager</td><td>USD 6,95</td></tr>
+          <tr><td><a href="https://www.bhphotovideo.com/c/product/1667631-REG/pearstone_cat6_s03bl_cat6_snagless_patch_cable.html">Pearstone CAT6-S03BL</a></td><td>RJ45 frå Pi til telefonadapter</td><td>B&amp;H, USA</td><td>På lager</td><td>USD 2,49</td></tr>
+          <tr><td><a href="https://www.bhphotovideo.com/c/product/1762271-REG/belkin_inc012btbk_usb_c_to_2_5gb_ethernet.html">Belkin INC012BTBK</a></td><td>USB-C Ethernet på kompatibel iPhone</td><td>B&amp;H, USA</td><td>På lager</td><td>USD 39,99</td></tr>
+          <tr><td><a href="https://www.digikey.com/en/products/detail/c-k/K12GO-BK-1-5-3-5-7N-LL/19099755">C&amp;K K12GO BK 1.5 3.5/7N LL</a></td><td>To-trinns utløysarbrytar for evalueringsprøve</td><td>DigiKey, USA</td><td>På lager</td><td>USD 4,26</td></tr>
+        </tbody>
+      </table></div>
+      <div class="total"><span>Sum publiserte vareprisar, 12 valde delar</span><strong>USD 3 883,52</strong></div>
+      <p class="small">Dette er summen av lenkja vareprisar, ikkje eit anslag for ferdig A15 eller ein pris levert til Noreg. Sony sin medfølgjande Power &amp; Control Cable er ikkje telt ein gong til. OEM-forsyninga er merkt 36 W, medan Sony åtvarar om om lag 40 W korte opptakstoppar; ho er berre vald for overvaka benkprøve. Brytaren treng eit dokumentert kabel-/festeopplegg før han kan koplast til. <a href="/bygg/bom.json">Last ned maskinlesbar prisliste</a>.</p>
+      <p class="small">For lokal prissamanlikning i Noreg: <a href="https://www.foto.no/sony/159652/sony-ilx-lr1-videokamera-61-mp-dot--fullframe">ILX-LR1 hos Foto.no: kr 51 263</a> (bestillingsvare), <a href="https://www.scandinavianphoto.no/objektiv/objektiv-til-sony/sony-e-og-fe/fe-50mm-f18-1026183">SEL50F18F hos Scandinavian Photo: kr 2 399</a> og <a href="https://www.foto.no/angelbird/159124/angelbird-av-pro-sd-128gb-v30-v30-max-read-100-write-90-mb-s">Angelbird AV PRO SD 128 GB hos Foto.no: kr 499</a>. Dei tre publiserte prisane summerer til kr 54 161 inkl. oppgitt norsk mva, men omfattar ikkje straum, bru, kablar eller skal; kameralevering er ikkje stadfesta.</p>
+    </section>
+    <div class="rule"></div>
+    <section class="wrap">
+      <div class="section-head"><span class="label">03 / Delar som må skaffast</span><div><h2>Det printaren ikkje kan lage.</h2><p>Ei fullstendig produktliste må spesifiserast mot kontrollert CAD, straummålingar og monteringsprøver. Desse gruppene er nødvendige, men ingen pris blir dikta opp før eksakt del og mengd er valt.</p></div></div>
+      <div class="inventory">
+        <article><h3>Bilete og optikk</h3><p>Sensor, lukkar, autofokuselektronikk og E-fatning ligg i ILX-LR1; objektivet blir kjøpt separat. Filterstabel og register blir målte på fysisk kjerne før skal og ring blir teikna ferdig.</p></article>
+        <article><h3>Straum og lagring</h3><p>Battericeller eller kvalifisert pakke, vern, lading, regulatorar, kablar og minnekort. Benken brukar eksterne forsyningar; den portable løysinga treng eige skjema og prøving.</p></article>
+        <article><h3>Kontroll og samband</h3><p>To-trinns utløysarbrytar, taktile hjul/brytarar, kontaktar, radiodel/antenne, statuslys og Ethernet-adapter for kablet iPhone. Knappedelar i formmodellen er berre visuelle.</p></article>
+        <article><h3>Berande mekanikk</h3><p>Metallberar, stativgjenger, remfeste, skruar, gjengeinnsatsar, pakningar og kabelavlasting. Printa skal er utside, ikkje dokumentert lastveg for linse, stativ eller rem.</p></article>
+      </div>
+    </section>
+    <div class="rule"></div>
+    <section id="kontroll" class="wrap">
+      <div class="section-head"><span class="label">04 / Frigjeving</span><div><h2>Render etter kontroll.</h2><p>OpenPrinter er inspirasjon for forståelege, reparerbare produkt og eksploderte delar. A15-bileta skal først syne ein verkeleg kontrollerbar konstruksjon.</p></div></div>
+      <div class="gates">
+        <article><div><h3>Form og CAD</h3><p>Målsett A15-utsida, indre volum, STEP og toleransar.</p></div><span class="state">Open</span></article>
+        <article><div><h3>Elektronikk</h3><p>Straum, vern, skjema, kablar og termikk.</p></div><span class="state">Open</span></article>
+        <article><div><h3>Optikk og programvare</h3><p>RAW, søkjarfart, fokus, farge og gjentekne opptak.</p></div><span class="state">Open</span></article>
+        <article><div><h3>Montering og prøve</h3><p>Fysisk førsteartikkel, service, last og tryggleik.</p></div><span class="state">Open</span></article>
+      </div>
+      <p class="small">Ingen av desse portane kan lukkast av ein visualisering eller ein simulert kameraserver åleine. <a href="https://github.com/lukketsvane/formnerd.iverfinne.no/tree/main/open-camera/phone_link">Den opne telefonprototypen</a> har syntetiske bilete og seks beståtte API-testar; Swift-kjelda er ikkje bygd på iPhone, og ekte Sony-SDK er ikkje kopla til.</p>
+    </section>
+  </main>
+  <footer><div class="wrap"><a class="brand" href="/">FormNerd.</a><p>A15 Rev E er under utvikling. Ope A15-design skal få redigerbare kjelder, stykklista, monteringsrettleiing og testresultat. Sony-kjerne og SDK er eksterne, proprietære delar.</p></div></footer>
+</body>
+</html>

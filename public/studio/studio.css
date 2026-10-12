@@ -9,6 +9,7 @@ a:focus-visible,button:focus-visible{outline:none;text-decoration:underline;text
 .studio-header nav{display:flex;gap:22px}
 .studio-header nav a{color:#8a8a8a;min-width:32px;justify-content:center}
 .studio-header nav a[aria-current=page]{color:#fff}
+.studio-header nav a.build-link{color:#d8d0c4}
 .studio-header a:active{opacity:.5}
 .studio-gesture{position:fixed;z-index:15;top:calc(max(12px,env(safe-area-inset-top)) + 48px);left:18px;right:18px;margin:0;text-align:center;pointer-events:none;color:#8c8c8c;font-size:12px;line-height:1.4;transition:opacity .3s}
 .studio-gesture[data-dismissed=true]{opacity:0}

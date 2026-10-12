@@ -1,0 +1,280 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "FormNerd local camera API",
+    "version": "0.1.0",
+    "description": "Transport-independent EVT contract. The executable mock uses HTTP on loopback without authentication. Production requires paired TLS identity and authorization."
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8765",
+      "description": "Development mock only"
+    }
+  ],
+  "paths": {
+    "/v1/health": {
+      "get": {
+        "operationId": "health",
+        "responses": {
+          "200": {
+            "description": "Service is running",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["status", "mock"],
+                  "properties": {
+                    "status": {"type": "string", "const": "ok"},
+                    "mock": {"type": "boolean"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/identity": {
+      "get": {
+        "operationId": "identity",
+        "responses": {
+          "200": {
+            "description": "Camera identity and API version",
+            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Identity"}}}
+          }
+        }
+      }
+    },
+    "/v1/capabilities": {
+      "get": {
+        "operationId": "capabilities",
+        "responses": {
+          "200": {
+            "description": "Only settings and formats actually supported by this device",
+            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Capabilities"}}}
+          }
+        }
+      }
+    },
+    "/v1/state": {
+      "get": {
+        "operationId": "state",
+        "responses": {
+          "200": {
+            "description": "Current camera status",
+            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/State"}}}
+          }
+        }
+      }
+    },
+    "/v1/settings": {
+      "patch": {
+        "operationId": "updateSettings",
+        "requestBody": {
+          "required": true,
+          "content": {"application/json": {"schema": {"$ref": "#/components/schemas/SettingsPatch"}}}
+        },
+        "responses": {
+          "200": {
+            "description": "Applied settings",
+            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Settings"}}}
+          },
+          "422": {"description": "Unsupported or out-of-range setting"}
+        }
+      }
+    },
+    "/v1/captures": {
+      "post": {
+        "operationId": "capture",
+        "description": "A repeated request_id must return the same capture_id and must not expose twice.",
+        "requestBody": {
+          "required": true,
+          "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CaptureRequest"}}}
+        },
+        "responses": {
+          "201": {
+            "description": "Capture created; status may be saving or ready",
+            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CaptureStatus"}}}
+          },
+          "409": {"description": "Sensor busy or storage unavailable"},
+          "422": {"description": "Invalid request"}
+        }
+      }
+    },
+    "/v1/captures/{capture_id}": {
+      "get": {
+        "operationId": "captureStatus",
+        "parameters": [{"$ref": "#/components/parameters/CaptureId"}],
+        "responses": {
+          "200": {
+            "description": "Capture status and immutable file metadata if ready",
+            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CaptureStatus"}}}
+          },
+          "404": {"description": "Unknown capture"}
+        }
+      }
+    },
+    "/v1/media": {
+      "get": {
+        "operationId": "listMedia",
+        "responses": {
+          "200": {
+            "description": "Ready captures stored in camera",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["items"],
+                  "properties": {"items": {"type": "array", "items": {"$ref": "#/components/schemas/Media"}}}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/media/{capture_id}/raw": {
+      "get": {
+        "operationId": "downloadRaw",
+        "description": "Immutable bytes. Returns SHA-256 as quoted ETag and supports byte ranges for resume.",
+        "parameters": [
+          {"$ref": "#/components/parameters/CaptureId"},
+          {"name": "Range", "in": "header", "required": false, "schema": {"type": "string"}}
+        ],
+        "responses": {
+          "200": {
+            "description": "Complete file",
+            "headers": {
+              "ETag": {"schema": {"type": "string"}},
+              "Accept-Ranges": {"schema": {"type": "string", "const": "bytes"}}
+            },
+            "content": {"application/octet-stream": {"schema": {"type": "string", "format": "binary"}}}
+          },
+          "206": {
+            "description": "Requested byte range",
+            "headers": {
+              "ETag": {"schema": {"type": "string"}},
+              "Accept-Ranges": {"schema": {"type": "string", "const": "bytes"}},
+              "Content-Range": {"schema": {"type": "string"}}
+            },
+            "content": {"application/octet-stream": {"schema": {"type": "string", "format": "binary"}}}
+          },
+          "404": {"description": "Unknown file"},
+          "416": {"description": "Invalid byte range"}
+        }
+      }
+    },
+    "/v1/preview.jpg": {
+      "get": {
+        "operationId": "previewFrame",
+        "description": "Single downsampled frame with X-Frame-Sequence and X-Frame-Unix-Ms headers; poll only for EVT.",
+        "responses": {
+          "200": {"description": "JPEG frame", "content": {"image/jpeg": {"schema": {"type": "string", "format": "binary"}}}},
+          "503": {"description": "Preview unavailable"}
+        }
+      }
+    },
+    "/v1/preview.mjpeg": {
+      "get": {
+        "operationId": "previewStream",
+        "description": "Multipart JPEG preview. Each part includes sequence and Unix millisecond timestamp.",
+        "responses": {
+          "200": {"description": "Continuous preview", "content": {"multipart/x-mixed-replace": {"schema": {"type": "string", "format": "binary"}}}},
+          "503": {"description": "Preview unavailable"}
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "CaptureId": {
+        "name": "capture_id",
+        "in": "path",
+        "required": true,
+        "schema": {"type": "string", "format": "uuid"}
+      }
+    },
+    "schemas": {
+      "Identity": {
+        "type": "object",
+        "required": ["device_id", "api_version", "mock"],
+        "properties": {
+          "device_id": {"type": "string"},
+          "api_version": {"type": "string"},
+          "mock": {"type": "boolean"}
+        }
+      },
+      "Settings": {
+        "type": "object",
+        "required": ["exposure_time_us", "gain_db"],
+        "properties": {
+          "exposure_time_us": {"type": "integer", "minimum": 100, "maximum": 1000000},
+          "gain_db": {"type": "number", "minimum": 0, "maximum": 24}
+        }
+      },
+      "SettingsPatch": {
+        "type": "object",
+        "minProperties": 1,
+        "additionalProperties": false,
+        "properties": {
+          "exposure_time_us": {"type": "integer", "minimum": 100, "maximum": 1000000},
+          "gain_db": {"type": "number", "minimum": 0, "maximum": 24}
+        }
+      },
+      "Capabilities": {
+        "type": "object",
+        "required": ["api_version", "mock", "sensor", "settings", "preview"],
+        "properties": {
+          "api_version": {"type": "string"},
+          "mock": {"type": "boolean"},
+          "sensor": {"type": "object"},
+          "settings": {"type": "object"},
+          "preview": {"type": "object"}
+        }
+      },
+      "State": {
+        "type": "object",
+        "required": ["device_id", "sensor_ready", "storage_ready", "capture_count", "settings", "mock"],
+        "properties": {
+          "device_id": {"type": "string"},
+          "sensor_ready": {"type": "boolean"},
+          "storage_ready": {"type": "boolean"},
+          "capture_count": {"type": "integer", "minimum": 0},
+          "settings": {"$ref": "#/components/schemas/Settings"},
+          "mock": {"type": "boolean"}
+        }
+      },
+      "CaptureRequest": {
+        "type": "object",
+        "required": ["request_id"],
+        "properties": {"request_id": {"type": "string", "format": "uuid"}}
+      },
+      "CaptureStatus": {
+        "type": "object",
+        "required": ["capture_id", "status"],
+        "properties": {
+          "capture_id": {"type": "string", "format": "uuid"},
+          "status": {"type": "string", "enum": ["saving", "ready", "error"]}
+        }
+      },
+      "Media": {
+        "type": "object",
+        "required": ["capture_id", "status", "created_unix_ms", "source", "file_name", "media_type", "format", "width", "height", "size_bytes", "sha256"],
+        "properties": {
+          "capture_id": {"type": "string", "format": "uuid"},
+          "request_id": {"type": ["string", "null"], "format": "uuid"},
+          "source": {"type": "string", "enum": ["remote", "physical"]},
+          "status": {"type": "string", "enum": ["saving", "ready", "error"]},
+          "created_unix_ms": {"type": "integer"},
+          "file_name": {"type": "string"},
+          "media_type": {"type": "string"},
+          "format": {"type": "string"},
+          "width": {"type": "integer"},
+          "height": {"type": "integer"},
+          "size_bytes": {"type": "integer"},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+# FormNerd iPhone kjeldeskjelett
+
+Dette er gjenbrukbare kjeldefiler for ein iOS 17+ SwiftUI-prototype til A15 Rev E, ikkje eit signert eller kompilert produkt. På ein Mac: lag eit nytt iOS App-prosjekt i Xcode med SwiftUI, legg inn `FormNerdPhoneApp.swift`, `ContentView.swift`, `CameraClient.swift`, og slå saman nøklane frå `Info.plist` med prosjektet sin Info.plist. Berre éi `@main` appfil skal vere i målet. Vel ein lokal signeringsprofil og køyr på ein ekte USB-C iPhone; iOS-simulator kan ikkje stadfeste trådlaus lokalnett- eller USB-kompatibilitet. Det finst ikkje eit kontrollert `.xcodeproj` her fordi Xcode ikkje er tilgjengeleg i dette Windows-miljøet.
+
+For standard mock: start `python phone_link/mock_camera.py --bind 0.0.0.0` på PC-en i eit betrodd nett. Skriv PC-en si LAN-adresse, til dømes `http://192.168.1.10:8765`, i appen. Adressefeltet er tomt ved oppstart, slik at `127.0.0.1` ikkje feilaktig blir brukt som PC-adresse. Tillat lokalnettilgang når iOS spør. Appen må halde seg i forgrunnen for prøvesøkjaren. Eksponering og gain får tillatne verdiområde frå `/v1/capabilities` etter tilkopling.
+
+Kjeldeskjelettet bruker berre HTTP for å møte den lokale **uautentiserte mocken**. Eit produkt krev parring, sertifikatfesting, HTTPS, trygg tokenlagring, Bonjour-oppdaging, fullstendig brotgjenopptaking av RAW, SDK-styrte kontrollar, og verifisert RAW/DNG-støtte. Nedlasta `synthetic-raw16-le` skal ikkje omtalast som fotografisk DNG. Den eksisterande Python-testen prøver mock-endepunkt og filhashar; han kompilerer ikkje Swift og provar ikkje iPhone, kabel, trådlaus yting eller Sony SDK.
+
+Appen har inga Bonjour-oppdaging enno, så `Info.plist` erklærer ingen Bonjour-tenester. Når oppdaging er implementert, må faktisk tenestetype leggjast til både kameraannonsen og `NSBonjourServices`.

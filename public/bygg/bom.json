@@ -1,0 +1,41 @@
+{
+  "project": "FormNerd A15 Rev E",
+  "status": "priced feasibility bench, not a released product BOM",
+  "snapshot_date": "2026-10-12",
+  "currency": "USD",
+  "region": "United States",
+  "unit_quantity": 1,
+  "items": [
+    {"id":"CAM-01","sku":"ILX-LR1","item":"Sony ILX-LR1","qty":1,"unit_price":3298.00,"seller":"B&H Photo","stock":"in stock","url":"https://www.bhphotovideo.com/c/product/1785754-REG/sony_ilx_lr1_industrial_camera.html","role":"proprietary screenless 61 MP camera core"},
+    {"id":"OPT-01","sku":"SEL50F18F/2","item":"Sony FE 50mm f/1.8","qty":1,"unit_price":198.00,"seller":"B&H Photo","stock":"in stock","url":"https://www.bhphotovideo.com/c/product/1242613-REG/sony_sel50f18f_fe_50mm_f_1_8_lens.html","role":"first-capture full-frame E-mount lens"},
+    {"id":"STO-01","sku":"SDSDXV9-256G-GUCIN","item":"SanDisk Extreme 256GB SDXC","qty":1,"unit_price":79.99,"seller":"B&H Photo","stock":"in stock","url":"https://www.bhphotovideo.com/c/product/1945437-REG/sandisk_sdsdxv9_256g_gucin_256gb_extreme_uhs_i_sd.html","role":"camera RAW storage"},
+    {"id":"CPU-01","sku":"Raspberry Pi 5 4GB","item":"Raspberry Pi 5 4GB","qty":1,"unit_price":110.00,"seller":"PiShop US","stock":"in stock","url":"https://www.pishop.us/product/raspberry-pi-5-4gb/","role":"Linux camera-to-iPhone bridge"},
+    {"id":"STO-02","sku":"Pi OS 32GB microSD","item":"32GB microSD with Raspberry Pi OS","qty":1,"unit_price":19.95,"seller":"PiShop US","stock":"in stock","url":"https://www.pishop.us/product/class-10-microsd-card-with-raspberry-pi-os-bookworm-32gb/","role":"bridge boot medium"},
+    {"id":"PWR-01","sku":"Raspberry Pi 27W USB-C PSU","item":"Raspberry Pi 27W USB-C power supply","qty":1,"unit_price":12.95,"seller":"PiShop US","stock":"in stock","url":"https://www.pishop.us/product/raspberry-pi-27w-usb-c-power-supply-white-us/","role":"independent 5.1V bridge power"},
+    {"id":"THM-01","sku":"Raspberry Pi Active Cooler","item":"Raspberry Pi Active Cooler","qty":1,"unit_price":10.95,"seller":"PiShop US","stock":"in stock","url":"https://www.pishop.us/product/raspberry-pi-active-cooler/","role":"bridge cooling"},
+    {"id":"PWR-02","sku":"AC-UES1230MT","item":"Sony AC-UES1230MT","qty":1,"unit_price":99.99,"seller":"B&H Photo","stock":"in stock","url":"https://www.bhphotovideo.com/c/product/1627063-REG/sony_149324435_ac_adaptor_ac_ues1230m_t.html","role":"12V camera bench supply; 36W nameplate requires transient validation"},
+    {"id":"CAB-01","sku":"USB32-6CMAM3","item":"Pearstone USB-A to USB-C data cable","qty":1,"unit_price":6.95,"seller":"B&H Photo","stock":"in stock","url":"https://www.bhphotovideo.com/c/product/1858347-REG/pearstone_usb32_6cmam3_usb_c_3_2_to_usb_a.html","role":"USB 3 camera-to-bridge connection"},
+    {"id":"CAB-02","sku":"CAT6-S03BL","item":"Pearstone Cat6 patch cable","qty":1,"unit_price":2.49,"seller":"B&H Photo","stock":"in stock","url":"https://www.bhphotovideo.com/c/product/1667631-REG/pearstone_cat6_s03bl_cat6_snagless_patch_cable.html","role":"wired bridge-to-iPhone Ethernet path"},
+    {"id":"NET-01","sku":"INC012BTBK","item":"Belkin USB-C to 2.5Gb Ethernet adapter","qty":1,"unit_price":39.99,"seller":"B&H Photo","stock":"in stock","url":"https://www.bhphotovideo.com/c/product/1762271-REG/belkin_inc012btbk_usb_c_to_2_5gb_ethernet.html","role":"wired IP connection to a compatible USB-C iPhone"},
+    {"id":"CTL-01","sku":"K12GO BK 1.5 3.5/7N LL","item":"C&K two-stage shutter switch","qty":1,"unit_price":4.26,"seller":"DigiKey","stock":"in stock","url":"https://www.digikey.com/en/products/detail/c-k/K12GO-BK-1-5-3-5-7N-LL/19099755","role":"physical shutter switch for evaluation; harness not defined"}
+  ],
+  "published_item_subtotal": 3883.52,
+  "included_without_second_charge": ["Sony Power & Control Cable supplied with ILX-LR1"],
+  "excluded_from_subtotal": ["US sales tax", "freight", "Norwegian VAT/import charges", "user-provided compatible iPhone", "HDMI service monitor and setup cable", "custom harness and switch mounting", "A15 shell, metal carrier and fasteners", "portable battery and power electronics", "labor, tooling and qualification"],
+  "unpriced_product_parts": [
+    {"subsystem":"structural","parts":"machined metal camera/lens/tripod/strap load path, fasteners and inserts","gate":"dimensioned A15 CAD and load tests"},
+    {"subsystem":"portable power","parts":"qualified battery pack, protection, charger, 12V and 5V rails, connectors and cables","gate":"measured camera/bridge load and safety design"},
+    {"subsystem":"controls","parts":"mounted two-stage switch, tactile controls, indicators, harness and sealed service interfaces","gate":"electrical drawing, switch travel and endurance tests"},
+    {"subsystem":"enclosure","parts":"printed shell material, finish, gaskets, thermal and RF details","gate":"controlled STEP/drawings, fit and environmental tests"}
+  ],
+  "norway_comparison": {
+    "currency": "NOK",
+    "vat_basis": "published VAT-inclusive seller price",
+    "items": [
+      {"sku":"ILX-LR1","unit_price":51263,"stock":"special order; lead time unconfirmed","url":"https://www.foto.no/sony/159652/sony-ilx-lr1-videokamera-61-mp-dot--fullframe"},
+      {"sku":"SEL50F18F","unit_price":2399,"stock":"in stock","url":"https://www.scandinavianphoto.no/objektiv/objektiv-til-sony/sony-e-og-fe/fe-50mm-f18-1026183"},
+      {"sku":"Angelbird AVP128SDV30","unit_price":499,"stock":"in stock","url":"https://www.foto.no/angelbird/159124/angelbird-av-pro-sd-128gb-v30-v30-max-read-100-write-90-mb-s"}
+    ],
+    "published_item_subtotal": 54161
+  }
+}

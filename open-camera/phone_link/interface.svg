@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="610" viewBox="0 0 1240 610">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M1 1 L9 5 L1 9" fill="none" stroke="#34404b" stroke-width="1.8"/>
+    </marker>
+    <style>
+      .title{font:700 28px Arial,sans-serif;fill:#18212a}.head{font:700 19px Arial,sans-serif;fill:#18212a}.body{font:16px Arial,sans-serif;fill:#26323e}.small{font:14px Arial,sans-serif;fill:#42515e}.box{fill:#fff;stroke:#6d7d89;stroke-width:2}.camera{fill:#eef3f5;stroke:#98aab5;stroke-width:2}.phone{fill:#eef0f8;stroke:#9da7c5;stroke-width:2}.link{fill:#faf7ee;stroke:#b49c6a;stroke-width:2}.wire{fill:none;stroke:#34404b;stroke-width:2;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1240" height="610" fill="#ffffff"/>
+  <text x="40" y="45" class="title">A13 · skjermlaus fotoarbeidsflyt</text>
+  <rect x="35" y="75" width="775" height="475" rx="20" class="camera"/>
+  <text x="60" y="111" class="head">I kamerahuset</text>
+  <rect x="65" y="150" width="175" height="92" rx="12" class="box"/>
+  <text x="86" y="187" class="head">Fullformatsensor</text>
+  <text x="86" y="215" class="small">med vald optikk</text>
+  <rect x="315" y="150" width="190" height="92" rx="12" class="box"/>
+  <text x="333" y="187" class="head">Opptaksteneste</text>
+  <text x="333" y="215" class="small">RAW og metadata</text>
+  <rect x="585" y="150" width="190" height="92" rx="12" class="box"/>
+  <text x="618" y="187" class="head">Lokalt lager</text>
+  <text x="618" y="215" class="small">ferdig RAW-fil</text>
+  <path d="M240 196 H315" class="wire"/>
+  <path d="M505 196 H585" class="wire"/>
+  <rect x="65" y="315" width="175" height="92" rx="12" class="box"/>
+  <text x="87" y="352" class="head">Fysisk utløysar</text>
+  <text x="87" y="380" class="small">utan telefon</text>
+  <path d="M240 361 H270 V235 H315" class="wire"/>
+  <rect x="315" y="315" width="190" height="92" rx="12" class="box"/>
+  <text x="342" y="352" class="head">Førehandsbilete</text>
+  <text x="342" y="380" class="small">nedskalert JPEG</text>
+  <path d="M410 242 V315" class="wire"/>
+  <rect x="585" y="315" width="190" height="92" rx="12" class="box"/>
+  <text x="615" y="352" class="head">Lokal API</text>
+  <text x="615" y="380" class="small">styring og filer</text>
+  <path d="M505 361 H585" class="wire"/>
+  <path d="M680 242 V315" class="wire"/>
+  <rect x="850" y="115" width="340" height="380" rx="28" class="phone"/>
+  <text x="883" y="155" class="head">iPhone-app</text>
+  <text x="883" y="190" class="body">Søkjar, innstillingar, status</text>
+  <text x="883" y="219" class="body">og kontrollert RAW-nedlasting</text>
+  <rect x="880" y="270" width="280" height="70" rx="11" class="link"/>
+  <text x="901" y="298" class="body">Lokal Wi-Fi / kamera-AP</text>
+  <text x="901" y="323" class="small">første koplingsveg</text>
+  <rect x="880" y="370" width="280" height="86" rx="11" class="link"/>
+  <text x="900" y="398" class="body">USB-C nettverkslenkje</text>
+  <text x="900" y="423" class="small">same API, fysisk iPhone-test</text>
+  <text x="900" y="443" class="small">står att</text>
+  <path d="M775 345 H850" class="wire"/>
+  <path d="M775 377 H820 V413 H850" class="wire"/>
+  <text x="52" y="585" class="small">EVT-arkitektur · syntetisk programvaremock finst · sensor, iPhone og USB-C-produktport er ikkje verifiserte</text>
+</svg>
