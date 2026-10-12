@@ -24,6 +24,7 @@ a:focus-visible,button:focus-visible{outline:none;text-decoration:underline;text
 .camera-canvas{outline:none}
 .camera-canvas:focus-visible{outline:none}
 .camera-state{padding:24px;text-align:center}
-@media(max-width:360px){.studio-header{gap:10px;font-size:13px}.studio-header nav{gap:14px}.studio-gesture{font-size:11px}.camera-study,.lens-study{width:calc(100% - 28px)}}
+@media(max-width:600px){.studio-header{gap:8px;font-size:12px}.studio-header nav{gap:8px}.studio-header nav a{min-width:26px}}
+@media(max-width:360px){.studio-header{gap:6px;padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}.studio-header nav{gap:5px}.studio-gesture{font-size:11px}.camera-study,.lens-study{width:calc(100% - 28px)}}
 @media(max-height:500px){.studio-gesture{display:none}.camera-study,.lens-study{bottom:max(4px,env(safe-area-inset-bottom))}.camera-stages button,.camera-views button,.lens-stages button{min-height:36px}}
 @media(prefers-reduced-motion:reduce){#studio-root,.studio-header a,.studio-gesture{transition:none}}

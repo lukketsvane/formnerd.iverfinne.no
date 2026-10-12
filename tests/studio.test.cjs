@@ -13,7 +13,7 @@ class Target{
 
 function setup(){
   const host=new Target(),hint=new Target();
-  const links=['a11','canon','a8'].map(model=>new Target({model}));
+  const links=['a11','canon','a8','a9','a10'].map(model=>new Target({model}));
   const document=new Target();
   document.querySelector=selector=>selector==='#studio-root'?host:hint;
   document.querySelectorAll=()=>links;
@@ -31,7 +31,7 @@ function setup(){
   return {host,hint,links,document,window,location,renders,history,deferred,tick};
 }
 
-test('camera, lens and A8 share history, selected navigation and return route',async()=>{
+test('studio models share history, selected navigation and return route',async()=>{
   const s=setup();s.deferred[0].resolve();await s.tick();
   assert.equal(s.links[0].attributes['aria-current'],'page');
   assert.equal(s.renders.at(-1).children[0].props.variant,'a11');
@@ -43,9 +43,17 @@ test('camera, lens and A8 share history, selected navigation and return route',a
   s.window.dispatchEvent({type:'studio:navigate',detail:'/a8'});
   s.deferred[2].resolve();await s.tick();
   assert.equal(s.renders.at(-1).children[0].props.variant,'a8');
-  s.location.pathname='/canon50mm';s.window.dispatchEvent({type:'popstate'});
+  s.window.dispatchEvent({type:'studio:navigate',detail:'/a9'});
   s.deferred[3].resolve();await s.tick();
-  assert.equal(s.history.length,2);
+  assert.equal(s.links[3].attributes['aria-current'],'page');
+  assert.equal(s.renders.at(-1).children[0].props.variant,'a9');
+  s.window.dispatchEvent({type:'studio:navigate',detail:'/a10'});
+  s.deferred[4].resolve();await s.tick();
+  assert.equal(s.links[4].attributes['aria-current'],'page');
+  assert.equal(s.renders.at(-1).children[0].props.variant,'a10');
+  s.location.pathname='/canon50mm';s.window.dispatchEvent({type:'popstate'});
+  s.deferred[5].resolve();await s.tick();
+  assert.equal(s.history.length,4);
   assert.equal(s.links[1].attributes['aria-current'],'page');
   s.window.dispatchEvent({type:'keydown',key:'Escape'});
   assert.equal(s.location.assigned,'/#kameraet');
@@ -83,4 +91,11 @@ test('all studio imports and asset routes resolve inside the combined build',()=
   assert.doesNotMatch(index,/<dialog|viewer\.js|<img|<svg/i);
   const assets=JSON.parse(fs.readFileSync('studio-assets.json'));
   for(const asset of assets)assert.ok(fs.statSync(path.join('dist',asset.path)).size===asset.bytes,asset.path);
+  for(const [file,expected] of Object.entries({
+    'models/a9-r03.glb':'d80a20ad7b95ad64a0da63c79f23ab14c02534718927fc3b4c3afcdad9c13217',
+    'camera/A10_REV_B_studio.glb':'c7c903dcbf7a775b2cf509dc81b4e131840b1b21cb30cced9860578141e98694'
+  })){
+    const actual=require('node:crypto').createHash('sha256').update(fs.readFileSync(path.join('dist',file))).digest('hex');
+    assert.equal(actual,expected,file);
+  }
 });

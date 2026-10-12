@@ -3,7 +3,7 @@ import {i as getReact,t as getDOM} from './vendor/framework-D_rUT4EX.js';
 const React=getReact();
 const host=document.querySelector('#studio-root');
 const root=getDOM().createRoot(host);
-const routes={'/kamera':{key:'a11',title:'A11',load:()=>import('./vendor/camera-page.js')},'/a8':{key:'a8',title:'A8',load:()=>import('./vendor/camera-page.js')},'/canon50mm':{key:'canon',title:'Canon 50 mm',load:()=>import('./vendor/lens-page.js')}};
+const routes={'/kamera':{key:'a11',title:'A11',load:()=>import('./vendor/camera-page.js')},'/canon50mm':{key:'canon',title:'Canon 50 mm',load:()=>import('./vendor/lens-page.js')},'/a8':{key:'a8',title:'A8',load:()=>import('./vendor/camera-page.js')},'/a9':{key:'a9',title:'A9',load:()=>import('./vendor/camera-page.js')},'/a10':{key:'a10',title:'A10',load:()=>import('./vendor/camera-page.js')}};
 const hint=document.querySelector('#studio-gesture');
 const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
 let generation=0,current='',mounted=false;
